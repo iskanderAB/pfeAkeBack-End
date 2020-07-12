@@ -23,10 +23,10 @@ class passwordHashSubscriber implements  EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            KernelEvents::VIEW =>['hashPassowrd',EventPriorities::PRE_WRITE]
+            KernelEvents::VIEW =>['hashPassword',EventPriorities::PRE_WRITE]
         ];
     }
-    public function hashPassowrd(GetResponseForControllerResultEvent $event ) {
+    public function hashPassword(GetResponseForControllerResultEvent $event ) {
         $user = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
 
@@ -36,5 +36,6 @@ class passwordHashSubscriber implements  EventSubscriberInterface
         $user->setPassword(
             $this->passwordEncoder->encodePassword($user , $user->getPassword())
         );
+
     }
 }

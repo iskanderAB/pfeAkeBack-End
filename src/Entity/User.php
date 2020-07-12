@@ -49,6 +49,11 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $clickUpTpken;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -124,5 +129,17 @@ class User implements UserInterface
     public function eraseCredentials()
     {
 
+    }
+
+    public function getClickUpTpken(): ?string
+    {
+        return $this->clickUpTpken;
+    }
+
+    public function setClickUpTpken(?string $clickUpTpken): self
+    {
+        $this->clickUpTpken = $clickUpTpken;
+
+        return $this;
     }
 }
